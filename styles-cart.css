@@ -92,7 +92,7 @@ nav ul li a {
 }
 
 .footer {
-    background-color: #f8e8d8;
+    background-color: #ece9e4;
     margin-top: 200px;
     padding: 40px 20px;
     display: flex;
@@ -130,7 +130,7 @@ nav ul li a {
 .footer-subscribe button {
     width: 100%;
     padding: 10px;
-    background-color: #ece9e4;
+    background-color: #f8e8d8;
     border: none;
     border-radius: 4px;
     color: white;
@@ -188,20 +188,24 @@ nav ul li a {
     cursor: pointer;
     text-align: center;
     border: 0;
-    padding: 7px 16px;
+    padding: 12px 20px;
     min-height: 36px;
     min-width: 36px;
     color: #ffffff;
-    background: #F4BFBF;
-    border-radius: 8px;
+    background: #ff9f9f;
+    border-radius: 4px;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 16px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 0px 0px, rgba(0, 0, 0, 0.2) 0px -1px 0px 0px inset;
     font-weight: bold;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
 }
 
 .btn-checkout:hover {
-    background: #f5b2b2;
+    background: #d53b3b;
 }
 
 .submit-btn-red {
