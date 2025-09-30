@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GLAMS — Product Details</title>
+  <link rel="stylesheet" href="styles-details.css">
+  <link rel="icon" href="assets/web.png" type="image/x-icon">
+  <!-- CSS kecil untuk thumbnail (biar gak ganggu styles-details.css yang lain) -->
+  <style>
+    .thumbs{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+    .thumbs img{width:72px;height:72px;object-fit:cover;border:2px solid #eee;border-radius:6px;cursor:pointer}
+    .thumbs img.active{border-color:#ff9bad}
+    .add-to-cart{display:inline-block;margin-top:12px;background:#ff9bad;color:#fff;padding:10px 16px;border-radius:6px}
+    .add-to-cart:hover{background:#e88a9d}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <img src="assets/glamzz.png" alt="logo" class="logo">
+    <nav>
+      <ul>
+        <li class="active"><a href="index.html">Home</a></li>
+        <li><a href="product.html">Products</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <nav>
+      <ul>
+        <li><a href="cart.html"><img src="assets/cart.png" alt="Cart"></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <article class="detail-product">
+      <!-- Gallery -->
+      <div class="product-gallery">
+        <img src="assets/sample1.jpg" alt="Product" class="main-image" id="mainImage">
+        <div id="thumbs" class="thumbs"></div>
+      </div>
+
+      <!-- Info -->
+      <div class="product-info">
+        <!-- Seller -->
+        <div class="store-info">
+          <div class="store-image">
+            <img src="assets/user.png" alt="Default Seller Image" class="seller-image">
+          </div>
+          <div class="store-details">
+            <h2 class="seller-name">Seller Name</h2>
+          </div>
+        </div>
+
+        <!-- Details -->
+        <div class="product-details">
+          <h2 class="title">Sample Product Name</h2>
+          <p class="desc">Desc: This is a sample description of the product.</p>
+          <p class="sold">Sold: 0</p>
+          <p class="price">Rp -</p>
+          <div class="quantity-control">
+            <input type="number" name="quantity" value="1" min="1" class="quantity-input">
+          </div>
+          <a href="cart.html" class="add-to-cart" id="addToCartLink">Add to Cart</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logo">
+      <img src="assets/logo.png" class="logo" alt="Glams Logo">
+    </div>
+    <div class="footer-section">
+      <h3>Home</h3>
+      <ul>
+        <li><a href="index.html#rec">Recommendation</a></li>
+        <li><a href="product.html">Categories</a></li>
+        <li><a href="index.html#testi">Testimonial</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Products</h3>
+      <ul>
+        <li><a href="product.html">Face</a></li>
+        <li><a href="product.html">Eyes</a></li>
+        <li><a href="product.html">Lips</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Brands</h3>
+      <ul>
+        <li><a href="#">Best Sellers</a></li>
+        <li><a href="#">Top Locals</a></li>
+        <li><a href="#">International</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>About Us</h3>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Privacy & Policy</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+      </ul>
+    </div>
+    <div class="footer-social">
+      <a href="#"><img src="assets/instagram.png" alt="Instagram"></a>
+      <a href="#"><img src="assets/facebook.png" alt="Facebook"></a>
+      <a href="#"><img src="assets/tiktok.png" alt="TikTok"></a>
+      <a href="#"><img src="assets/youtube.png" alt="YouTube"></a>
+    </div>
+  </footer>
+
+  <!-- Script dinamis -->
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Ambil ID dari URL
+    const params = new URLSearchParams(location.search);
+    const id = params.get('idProduct') || '1';
+
+    // Data produk (samakan nama file gambar dgn punyamu)
+    const products = {
+      1: {
+        name: "Maybelline Lash Sensation Sky High Mascara",
+        price: 279000,
+        sold: 120,
+        desc: "Mascara terbaik untuk bulu mata panjang dan lentik.",
+        seller: "Maybelline Official",
+        images: ["assets/sample1.jpg"]
+      },
+      2: {
+        name: "Rare Beauty Soft Pinch Luminous Powder Blush",
+        price: 364000,
+        sold: 105,
+        desc: "Blush lembut dengan hasil glowing alami.",
+        seller: "Rare Beauty Store",
+        images: ["assets/sample2.jpg"]
+      },
+      3: {
+        name: "Rose Inc Satin Lip Color Rich Refillable Lipstick",
+        price: 220000,
+        sold: 200,
+        desc: "Lipstick satin creamy dengan kemasan refillable.",
+        seller: "Rose Inc",
+        images: ["assets/sample3.jpg"]
+      },
+      4: {
+        name: "Cosnori Easy Draw Auto Eyebrow",
+        price: 125000,
+        sold: 85,
+        desc: "Pensil alis otomatis dengan hasil natural dan rapi.",
+        seller: "Cosnori Official",
+        images: ["assets/sample4.jpg"]
+      },
+      5: {
+        name: "Huda Beauty Eyeshadow Palette",
+        price: 495000,
+        sold: 45,
+        desc: "Palet eyeshadow mewah dengan warna pigmented.",
+        seller: "Huda Beauty",
+        images: ["assets/sample5.jpg"]
+      },
+      6: {
+        name: "YSL Touche Éclat Glow Cushion",
+        price: 995000,
+        sold: 100,
+        desc: "Cushion mewah dengan hasil glowing dan coverage buildable.",
+        seller: "YSL Beauty",
+        images: ["assets/sample6.jpg"]
+      }
+    };
+
+    const p = products[id] || products[1];
+
+    // Elemen target
+    const mainImg  = document.getElementById('mainImage');
+    const thumbsEl = document.getElementById('thumbs');
+    const titleEl  = document.querySelector('.product-details .title');
+    const descEl   = document.querySelector('.product-details .desc');
+    const soldEl   = document.querySelector('.product-details .sold');
+    const priceEl  = document.querySelector('.product-details .price');
+    const sellerEl = document.querySelector('.seller-name');
+    const addLink  = document.getElementById('addToCartLink');
+
+    // Isi konten
+    titleEl.textContent = p.name;
+    descEl.textContent  = "Desc: " + p.desc;
+    soldEl.textContent  = "Sold: " + p.sold;
+    priceEl.textContent = "Rp " + p.price.toLocaleString('id-ID');
+    sellerEl.textContent= p.seller;
+    mainImg.src         = p.images[0];
+
+    // Link Add to Cart kirim idProduct juga (kalau kamu proses di cart.html)
+    addLink.href = "cart.html?idProduct=" + encodeURIComponent(id);
+
+    // Render thumbnails
+    thumbsEl.innerHTML = "";
+    p.images.forEach((src, i) => {
+      const t = document.createElement('img');
+      t.src = src;
+      if(i===0) t.classList.add('active');
+      t.addEventListener('click', () => {
+        mainImg.src = src;
+        thumbsEl.querySelectorAll('img').forEach(img => img.classList.remove('active'));
+        t.classList.add('active');
+      });
+      thumbsEl.appendChild(t);
+    });
+  });
+  </script>
+</body>
+</html>
